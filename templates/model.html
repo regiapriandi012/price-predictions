@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="style.css"rel="stylesheet" type="text/css">
+<title>Sahabat Ormas</title>
+<link href="{{url_for('static', filename='img/logo.png')}}" rel="icon">
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{url_for('index')}}">Sahabat Ormas <img src="{{url_for('static', filename='img/logo.png')}}" style="width: 50px; height: 50px;"></a></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+          </li>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{url_for('model')}}">Cek Prediksi</a>
+              </li>
+              <li class="nav-item dropdown">
+              </li>
+            </ul>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="container p-3 my-3 border bg-success" style="width: 500px; height: 450px;">
+    <h1 align="center">Cek Prediksi</h1>
+    
+    <form action="/" method="POST">
+      <input type="text" name="nama" class="form-control" placeholder="Nama" style="margin: 5px" required>
+      <select class="form-select" name="prediksi" aria-label="Default select example" style="margin: 5px" required>
+        <option value="">Prediksi</option>
+        <option value="emas"><label for="emas">Harga Emas</option></label>
+        <option value="perak"><label for="perak">Harga Perak</option></label>
+        <option value="dollar"><label for="dollar">Harga Dollar</option></label>
+      </select>
+      <select class="form-select" name="metode" aria-label="Default select example" style="margin: 5px" required>
+        <option value="">Pilih Metode Prediksi</option>
+        <option value="linear"><label for="linear">Linear Regression</option></label>
+        <option value="hubber"><label for="hubber">Hubber</option></label>
+        <option value="lasso"><label for="lasso">Lasso</option></label>
+      </select>
+      <input type="submit" style="float: right;" value="Submit" class="btn btn-primary"></button>
+      <br>
+      <br>
+
+      <h1 align="center">Hasil Data</h1>
+  Nama               : {{ nama }}<br>
+  Prediksi           : {{ prediksi }} <br>
+  Metode             : {{ metode }}<br>
+  Prediksinya Besoknya Adalah : {{ hasil }}
+        </div>
+        </div>
+    </div>
+  </form>
+
+
+
+  </footer>
+
+
+
+      <!-- JavaScript Bundle with Popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <div id="chart">
+    <canvas id="myChart"></canvas>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>
