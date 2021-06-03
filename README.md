@@ -1,2 +1,2 @@
 # PricePredictions
-bismillah semoga lancar
+asuu
