@@ -49,4 +49,5 @@ def proses():
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dla),3)))
 
 if __name__ == "__main__":
+    from app import app
     app.run(debug=True)
