@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Lasso
 import numpy as np
-from connect import data_perak as data
+from ..server import data_perak as data
 import datetime
 
 time = datetime.datetime.now()

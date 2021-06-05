@@ -1,6 +1,6 @@
 import psycopg2
 import pandas as pd
-from config import config
+from .conf import config
 
 # Obtain the configuration parameters
 params = config()
@@ -14,7 +14,7 @@ def create_pandas_table(sql_query, database=conn):
     table = pd.read_sql_query(sql_query, database)
     return table
 
-# Utilize the create_pandas_table function to create a Pandas data frame
+# Utilize th24re create_pandas_table function to create a Pandas data frame
 # Store the data as a variable
 data_emas = create_pandas_table("SELECT * FROM emas")
 data_perak = create_pandas_table("SELECT * FROM perak")

@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request
-from modelEmasLinear import lin_predict_future as el
-from modelEmasHubber import hub_predict_future as eh
-from modelEmasLasso import las_predict_future as ela
-from modelDolarLinear import lin_predict_future as dl
-from modelDolarHubber import hub_predict_future as dh
-from modelDolarLasso import las_predict_future as dla
-from modelPerakLinear import lin_predict_future as pl
-from modelPerakHubber import hub_predict_future as ph
-from modelPerakLasso import las_predict_future as pla
+from .model.modelEmasLinear import lin_predict_future as el
+from .model.modelEmasHubber import hub_predict_future as eh
+from .model.modelEmasLasso import las_predict_future as ela
+from .model.modelDolarLinear import lin_predict_future as dl
+from .model.modelDolarHubber import hub_predict_future as dh
+from .model.modelDolarLasso import las_predict_future as dla
+from .model.modelPerakLinear import lin_predict_future as pl
+from .model.modelPerakHubber import hub_predict_future as ph
+from .model.modelPerakLasso import las_predict_future as pla
 
 app = Flask(__name__)
 
@@ -29,7 +29,6 @@ def proses():
     prediksi = request.form['prediksi']
     metode = request.form['metode']
 
-    float = int
     if metode == "linear" and prediksi == "emas":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(el),3)))
     elif metode == "linear" and prediksi == "perak":

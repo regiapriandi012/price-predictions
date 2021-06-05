@@ -1,7 +1,7 @@
 from sklearn.linear_model import HuberRegressor
 import numpy as np
 import matplotlib.pyplot as plt
-from connect import data_emas as data
+from ..server import data_perak as data
 import datetime
 
 time = datetime.datetime.now()

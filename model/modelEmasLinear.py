@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import numpy as np
-from connect import data_dolar as data
+from ..server import data_emas as data
 import datetime
 
 time = datetime.datetime.now()
