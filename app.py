@@ -43,23 +43,23 @@ def proses():
     prediksi = request.form['prediksi']
     metode = request.form['metode']
 
-    if metode == "linear" and prediksi == "emas":
+    if metode == "Linear Regression" and prediksi == "Harga Emas":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(el),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cel, intercept=iel)
-    elif metode == "linear" and prediksi == "perak":
+    elif metode == "Linear Regression" and prediksi == "Harga Perak":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pl),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cpl, intercept=ipl)
-    elif metode == "linear" and prediksi == "dollar":
+    elif metode == "Linear Regression" and prediksi == "Harga Dollar":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dl),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdl, intercept=idl)
-    elif metode == "hubber" and prediksi == "emas":
+    elif metode == "Hubber Regressor" and prediksi == "Harga Emas":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(int(eh),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=ceh, intercept=ieh)
-    elif metode == "hubber" and prediksi == "perak":
+    elif metode == "Hubber Regressor" and prediksi == "Harga Perak":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ph),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cph, intercept=iph)
-    elif metode == "hubber" and prediksi == "dollar":
+    elif metode == "Hubber Regressor" and prediksi == "Harga Dollar":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dh),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdh, intercept=idh)
-    elif metode == "lasso" and prediksi == "emas":
+    elif metode == "Lasso" and prediksi == "Harga Emas":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ela),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cela, intercept=iela)
-    elif metode == "lasso" and prediksi == "perak":
+    elif metode == "Lasso" and prediksi == "Harga Perak":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pla),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cpla, intercept=ipla)
-    elif metode == "lasso" and prediksi == "dollar":
+    elif metode == "Lasso" and prediksi == "Harga Dollar":
         return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dla),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdla, intercept=idla)
 
 @app.route('/lala')
