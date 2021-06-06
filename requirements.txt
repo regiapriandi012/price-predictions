@@ -1,6 +1,7 @@
+flask
 pandas
 matplotlib 
 psycopg2
 sklearn
 numpy
-flask
+
