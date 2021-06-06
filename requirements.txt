@@ -1,0 +1,5 @@
+pandas
+matplotlib 
+psycopg2
+sklearn
+numpy
