@@ -4,7 +4,7 @@ import numpy as np
 from ..server import data_dolar as data
 import datetime
 
-time = datetime.datetime.now()
+time = datetime.date.today() + datetime.timedelta(days=1)
 
 x = data["date"]
 X = x.values.reshape(-1, 1)
@@ -19,7 +19,7 @@ lin.fit(X, y)
 intercept = lin.intercept_
 coef = lin.coef_
 
-X_future = np.array((time.day)+1)
+X_future = np.array(time.day)
 X_future = X_future.reshape(-1, 1)
 
 lin_predict = lin.predict(X)
