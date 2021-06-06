@@ -29,28 +29,38 @@ def model():
 
 @app.route('/', methods=['POST'])
 def proses():
+    from .model.modelEmasLinear import coef as cel, intercept as iel
+    from .model.modelEmasHubber import coef as ceh, intercept as ieh
+    from .model.modelEmasLasso import coef as cela, intercept as iela
+    from .model.modelDolarLinear import coef as cdl, intercept as idl
+    from .model.modelDolarHubber import coef as cdh, intercept as idh
+    from .model.modelDolarLasso import coef as cdla, intercept as idla
+    from .model.modelPerakLinear import coef as cpl, intercept as ipl
+    from .model.modelPerakHubber import coef as cph, intercept as iph
+    from .model.modelPerakLasso import coef as cpla, intercept as ipla
+
     nama = request.form['nama']
     prediksi = request.form['prediksi']
     metode = request.form['metode']
 
     if metode == "linear" and prediksi == "emas":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(el),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(el),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cel, intercept=iel)
     elif metode == "linear" and prediksi == "perak":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pl),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pl),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cpl, intercept=ipl)
     elif metode == "linear" and prediksi == "dollar":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dl),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dl),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdl, intercept=idl)
     elif metode == "hubber" and prediksi == "emas":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(int(eh),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(int(eh),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=ceh, intercept=ieh)
     elif metode == "hubber" and prediksi == "perak":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ph),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ph),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cph, intercept=iph)
     elif metode == "hubber" and prediksi == "dollar":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dh),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dh),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdh, intercept=idh)
     elif metode == "lasso" and prediksi == "emas":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ela),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ela),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cela, intercept=iela)
     elif metode == "lasso" and prediksi == "perak":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pla),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pla),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cpla, intercept=ipla)
     elif metode == "lasso" and prediksi == "dollar":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dla),2)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dla),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdla, intercept=idla)
 
 @app.route('/lala')
 def hello():
