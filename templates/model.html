@@ -32,7 +32,7 @@
     </div>
   </nav>
   
-  <div class="container p-3 my-3 border bg-success" style="width: 500px; height: 450px;">
+  <div class="container p-3 my-3 border bg-success" style="width: 700px; height: 450px;">
     <h1 align="center">Cek Prediksi</h1>
     
     <form action="/" method="POST">
@@ -59,7 +59,10 @@
           <th scope="col">Nama</th>
           <th scope="col">Prediksi</th>
           <th scope="col">Metode</th>
-          <th scope="col">Prediksi Besoknya</th>
+          <th scope="col">Tanggal</th>
+          <th scope="col">Koefesien</th>
+          <th scope="col">Intercept</th>
+          <th scope="col">Hasil Prediksi</th>
           </tr>
         </thread>
         <tbody>
@@ -67,6 +70,9 @@
             <td>{{ nama }}</td>
             <td>{{ prediksi }}</td>
             <td>{{ metode }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>{{ hasil }}</td>
           </tr>
         </tbody>
