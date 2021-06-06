@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from ..server import data_emas as data
 import datetime
 
-time = datetime.datetime.now()
+time = datetime.date.today() + datetime.timedelta(days=1)
 
 date = data["date"]
 date = date.values.reshape(-1, 1)
@@ -20,7 +20,7 @@ las.fit(date, price)
 intercept = las.intercept_
 coef = las.coef_
 
-date_predict = np.array((time.day)+1)
+date_predict = np.array(time.day)
 date_predict = date_predict.reshape(-1, 1)
 
 las_predict = las.predict(date)
