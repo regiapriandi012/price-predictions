@@ -30,24 +30,23 @@ def proses():
     metode = request.form['metode']
 
     if metode == "linear" and prediksi == "emas":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(el),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(el),2)))
     elif metode == "linear" and prediksi == "perak":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pl),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pl),2)))
     elif metode == "linear" and prediksi == "dollar":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dl),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dl),2)))
     elif metode == "hubber" and prediksi == "emas":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(int(eh),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(int(eh),2)))
     elif metode == "hubber" and prediksi == "perak":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ph),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ph),2)))
     elif metode == "hubber" and prediksi == "dollar":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dh),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dh),2)))
     elif metode == "lasso" and prediksi == "emas":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ela),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(ela),2)))
     elif metode == "lasso" and prediksi == "perak":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pla),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(pla),2)))
     elif metode == "lasso" and prediksi == "dollar":
-        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dla),3)))
+        return render_template('model.html', nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(dla),2)))
 
 if __name__ == "__main__":
-    from app import app
     app.run(debug=True)
