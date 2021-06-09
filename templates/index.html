@@ -27,6 +27,15 @@
             <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
           </li>
           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Cek Grafik
+            </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#myChart">Grafik Harga Emas</a>
+            <a class="dropdown-item" href="#myChart2">Grafik Harga Perak</a>
+            <a class="dropdown-item" href="#myChart3">Grafik Harga Dollar</a>
+          </div>
+          <li class="nav-item dropdown">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -43,20 +52,142 @@
   </nav>
   
   <div class="container">
-    <div class="jumbotron" style="margin: 100px;">
-      <h1>Selamat Datang di Sahabat Ormas</h1>      
-      <p>Layanan prediksi harga emas, perak dan Mata uang</p>
+    <div class="jumbotron" style="margin: 100px; background-color: darkslategrey;">
+      <h1 style="color: white;">Selamat Datang di</h1>      
+      <p style="color: white;">Layanan prediksi harga emas, perak dan Mata uang</p>
     </div>    
   </div>
   <h1 align="center">Grafik Emas</h1>
   <br>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-      <div id="chart" style="margin: auto; width: 60%;">
-        <div style="width: 700px;height: 500px;">
-        <canvas id="myChart"></canvas>
-      <script type="text/javascript" src="{{url_for('static', filename='chartjs/chart.js')}}"></script>
-      </div>
-      </div>
+  <div style="display: flex; justify-content: center;">
+  <div style="width:900px; height:500px;">
+		<canvas id="myChart"></canvas>
+	</div>
+</div>
+</div>
+<h1 align="center">Grafik Perak</h1>
+  <br>
+<div style="display: flex; justify-content: center;">
+	<div style="width:900px; height:500px">
+		<canvas id="myChart2"></canvas>
+	</div>
+</div>
+<h1 align="center">Grafik Dollar</h1>
+  <br>
+<div style="display: flex; justify-content: center;">
+	<div style="width:900px; height:500px">
+		<canvas id="myChart3"></canvas>
+	</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+        datasets: [{
+            label: '# of Votes',
+            data: [900000, 850000, 870000, 820000, 700000, 1000000,500000,400000,600000,450000,260000,200000],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+var ctx = document.getElementById('myChart2').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+var ctx = document.getElementById('myChart3').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
 
   <section id="team" class="team section-bg">
     <div class="section-title">
