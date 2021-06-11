@@ -45,21 +45,33 @@ def modelll():
     metode = request.form['metode']
 
     if metode == "Linear Regression" and prediksi == "Harga Emas":
+        #menampilkan grafik
         from .model.modelEmasLinear import df, dfe, lin_predict, lin_pred_future
+        #inisisasi variabel fig untuk mengatur ukuran plot
         fig = Figure(figsize=(10, 8))
+        #inisiasi variable ax untuk plot
         ax = fig.subplots()
+        #untuk menampilkan harga di plot menggunakan scatter plot
         ax.scatter(df.date, df['price'], color='green')
+        #untuk menampikan garis linear
         ax.plot(df.date, lin_predict)
+        #untuk menampilkan garis linear prediksi besoknya
         ax.plot(dfe.prediksi, lin_pred_future)
+        #untuk memiringkan labels
         ax.tick_params(labelrotation=30)
+        #keterangan di harga
         ax.set_ylabel("Dalam Rupiah")
+        #keterangan di tanggal
         ax.set_xlabel("Tanggal (jangka 14 hari)")
+        #judul plot linear
         ax.legend(['Garis linear regression'])
+        #judul grafik
         ax.set_title("Grafik Linear Regression Prediksi Harga Emas")
 
+        #untuk mengsave grafik dalam format png
         buf = BytesIO()
         fig.savefig(buf, format="png")
-
+        #menyimpan grafik dalam variable data untuk dibaca di html
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
         return render_template('model.html', data=data, nama=nama, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(round(float(el),2)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cel, intercept=iel)
 
