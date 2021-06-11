@@ -12,9 +12,9 @@
 <title>Sahabat Ormas</title>
 <link href="{{url_for('static', filename='img/logo.png')}}" rel="icon">
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-success fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: darkslategrey;">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{url_for('index')}}">Sahabat Ormas 
+      <a class="navbar-brand" href="{{url_for('index')}}" style="color: white;">Sahabat Ormas 
         <img src="{{url_for('static', filename='img/logo.png')}}" style="width: 50px; height: 50px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
@@ -24,22 +24,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('index')}}" style="color: white;">Home</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
               Cek Grafik
             </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#myChart">Grafik Harga Emas</a>
-            <a class="dropdown-item" href="#myChart2">Grafik Harga Perak</a>
-            <a class="dropdown-item" href="#myChart3">Grafik Harga Dollar</a>
+            <a class="dropdown-item" href="#myChart" style="color: black;">Grafik Harga Emas</a>
+            <a class="dropdown-item" href="#myChart2" style="color: black;">Grafik Harga Perak</a>
+            <a class="dropdown-item" href="#myChart3" style="color: black;">Grafik Harga Dollar</a>
           </div>
           <li class="nav-item dropdown">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{url_for('model')}}">Cek Prediksi</a>
+                  <a class="nav-link active" aria-current="page" href="{{url_for('model')}}" style="color: white;">Cek Prediksi</a>
                 </li>
                 <li class="nav-item dropdown">
                 </li>
@@ -52,8 +52,8 @@
   </nav>
   
   <div class="container">
-    <div class="jumbotron" style="margin: 100px; background-color: darkslategrey;">
-      <h1 style="color: white;">Selamat Datang di</h1>      
+    <div class="jumbotron" style="margin: 100px; background-color: darkslategrey; border-radius: 20px;">
+      <h1 style="color: white;">Selamat Datang di</h1> 
       <p style="color: white;">Layanan prediksi harga emas, perak dan Mata uang</p>
     </div>    
   </div>
@@ -225,7 +225,7 @@ var myChart = new Chart(ctx, {
       </div>
     </div>
   </section>
-  <footer class="bg-success text-center text-light">
+  <footer class="text-center text-light bg-dark" style="color: cornflowerblue;">
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2021 Copyright: Sahabat Ormas
