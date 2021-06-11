@@ -1,32 +1,27 @@
 from sklearn.linear_model import Lasso
 import numpy as np
-import matplotlib.pyplot as plt
 from ..server import data_emas as data
 import datetime
+import pandas as pd
 
-time = datetime.date.today() + datetime.timedelta(days=1)
+
+besok = datetime.date.today() + datetime.timedelta(days=1)
 
 date = data["date"]
-date = date.values.reshape(-1, 1)
-
 price = data["price"]
 
-#plt.scatter(date, price)
+df = pd.DataFrame({'date': date, 'price': price})
+df.date  = pd.to_datetime(df.date)
 
-#Lasso
-las = Lasso()
-las.fit(date, price)
+las = Lasso(max_iter=10000000)
+las.fit(df.date.values.reshape(-1, 1), df['price'].values.reshape(-1, 1))
 
-intercept = las.intercept_
+date_predict = np.array([str(str(besok.year)+'-0'+str(besok.month)+'-'+str(besok.day))])
+dfe = pd.DataFrame({'prediksi': date_predict})
+dfe.prediksi = pd.to_datetime(dfe.prediksi)
+
 coef = las.coef_
+intercept = las.intercept_
 
-date_predict = np.array(time.day)
-date_predict = date_predict.reshape(-1, 1)
-
-las_predict = las.predict(date)
-las_predict_future = las.predict(date_predict)
-
-#plt.plot(date, las_predict)
-#plt.plot(date_predict, las_predict_future)
-
-#plt.show()
+las_predict = las.predict(df.date.values.astype(float).reshape(-1, 1))
+las_pred_future = las.predict(dfe.prediksi.values.astype(float).reshape(-1, 1))

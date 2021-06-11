@@ -1,32 +1,26 @@
 from sklearn.linear_model import HuberRegressor
 import numpy as np
-import matplotlib.pyplot as plt
 from ..server import data_dolar as data
 import datetime
+import pandas as pd
 
-time = datetime.date.today() + datetime.timedelta(days=1)
+besok = datetime.date.today() + datetime.timedelta(days=1)
 
 date = data["date"]
-date = date.values.reshape(-1, 1)
-
 price = data["price"]
 
-#plt.scatter(date, price)
+df = pd.DataFrame({'date': date, 'price': price})
+df.date  = pd.to_datetime(df.date)
 
-#Hubber
 hub = HuberRegressor()
-hub.fit(date, price)
+hub.fit(df.date.values.reshape(-1, 1), df['price'].values.reshape(-1, 1))
 
-intercept = hub.intercept_
+date_predict = np.array([str(str(besok.year)+'-0'+str(besok.month)+'-'+str(besok.day))])
+dfe = pd.DataFrame({'prediksi': date_predict})
+dfe.prediksi = pd.to_datetime(dfe.prediksi)
+
 coef = hub.coef_
+intercept = hub.intercept_
 
-date_predict = np.array(time.day)
-date_predict = date_predict.reshape(-1, 1)
-
-hub_predict = hub.predict(date)
-hub_predict_future = hub.predict(date_predict)
-
-#plt.plot(date, hub_predict)
-#plt.plot(date_predict, hub_predict_future)
-
-#plt.show()
+hub_predict = hub.predict(df.date.values.astype(float).reshape(-1, 1))
+hub_pred_future = hub.predict(dfe.prediksi.values.astype(float).reshape(-1, 1))

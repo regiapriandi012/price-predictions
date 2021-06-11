@@ -1,31 +1,26 @@
-import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import numpy as np
 from ..server import data_emas as data
 import datetime
+import pandas as pd
 
-time = datetime.date.today() + datetime.timedelta(days=1)
+besok = datetime.date.today() + datetime.timedelta(days=1)
 
-x = data["date"]
-X = x.values.reshape(-1, 1)
-y = data["price"]
+date = data["date"]
+price = data["price"]
 
-#plt.scatter(X, y)
+df = pd.DataFrame({'date': date, 'price': price})
+df.date  = pd.to_datetime(df.date)
 
-#Linear
 lin = LinearRegression()
-lin.fit(X, y)
+lin.fit(df.date.values.reshape(-1, 1), df['price'].values.reshape(-1, 1))
 
-intercept = lin.intercept_
+date_predict = np.array([str(str(besok.year)+'-0'+str(besok.month)+'-'+str(besok.day))])
+dfe = pd.DataFrame({'prediksi': date_predict})
+dfe.prediksi = pd.to_datetime(dfe.prediksi)
+
 coef = lin.coef_
+intercept = lin.intercept_
 
-X_future = np.array(time.day)
-X_future = X_future.reshape(-1, 1)
-
-lin_predict = lin.predict(X)
-lin_predict_future = lin.predict(X_future)
-
-#plt.plot(X, lin_predict)
-#plt.plot(X_future, lin_predict_future)
-
-#plt.show()
+lin_predict = lin.predict(df.date.values.astype(float).reshape(-1, 1))
+lin_pred_future = lin.predict(dfe.prediksi.values.astype(float).reshape(-1, 1))
