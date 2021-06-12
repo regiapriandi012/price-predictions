@@ -22,10 +22,10 @@ proyek membangun aplikasi machine learning berbasis algoritma linear regression,
     │   ├── __init__.py
     │   └── connect.py
     ├── static
-    │   ├── chartjs
-    │   │   ├── chartDolar.js
-    │   │   ├── chartEmas.js
-    │   │   └── chartPerak.js
+    │   │
+    │   │   
+    │   │   
+    │   │  
     │   ├── img
     │   │   ├── bagus.jpg
     │   │   ├── emas.jpg
