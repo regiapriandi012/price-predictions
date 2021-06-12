@@ -12,7 +12,7 @@ price = data["price"]
 df = pd.DataFrame({'date': date, 'price': price})
 df.date  = pd.to_datetime(df.date)
 
-las = Lasso(max_iter=100000000)
+las = Lasso()
 las.fit(df.date.values.reshape(-1, 1), df['price'].values.reshape(-1, 1))
 
 date_predict = np.array([str(str(besok.year)+'-0'+str(besok.month)+'-'+str(besok.day))])
