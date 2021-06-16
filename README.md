@@ -4,13 +4,13 @@ proyek membangun aplikasi machine learning berbasis algoritma linear regression,
 └── PricePredictions
     ├── model
     │   ├── __init__.py
-    │   ├── modelDolarHubber.py
+    │   ├── modelDolarRidge.py
     │   ├── modelDolarLasso.py
     │   ├── modelDolarLinear.py
-    │   ├── modelEmasHubber.py
+    │   ├── modelEmasRidge.py
     │   ├── modelEmasLasso.py
     │   ├── modelEmasLinear.py
-    │   ├── modelPerakHubber.py
+    │   ├── modelPerakRidge.py
     │   ├── modelPerakLasso.py 
     │   └── modelPerakLinear.py   
     ├── server
