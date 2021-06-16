@@ -42,8 +42,6 @@
     <h1 align="center" style="color: white;">Cek Prediksi</h1>
 
     <form action="/" method="POST" style="text-align: center;">
-      <input type="text" name="nama" class="form-control" placeholder="Nama" style="margin: 5px; width: 600px; margin: auto;" required>
-      <br>
       <select class="form-select" name="prediksi" aria-label="Default select example" style="margin: 5px; width: 600px; margin: auto;" required>
         <option value="" style="color: white;">Prediksi</option>
         <option value="Harga Emas"><label for="Harga Emas">Harga Emas</option></label>
@@ -54,7 +52,7 @@
       <select class="form-select" name="metode" aria-label="Default select example" style="margin: 5px; width: 600px; margin: auto;" required>
         <option value="">Pilih Metode Prediksi</option>
         <option value="Linear Regression"><label for="Linear Regression">Linear Regression</option></label>
-        <option value="Hubber Regressor"><label for="Hubber Regressor">Hubber</option></label>
+        <option value="Ridge Regression"><label for="Ridge Regression">Ridge Regression</option></label>
         <option value="Lasso"><label for="Lasso">Lasso</option></label>
       </select>
       <input type="submit" style="float: inherit;" value="Submit" class="btn btn-primary"></button>
@@ -64,7 +62,6 @@
       <h1 class="display-5" align="center" style="color: white;"> <b>Hasil Data</b></h1>
       <table class="table table-striped table-light">
         <tr>
-          <th scope="col">Nama</th>
           <th scope="col">Prediksi</th>
           <th scope="col">Metode</th>
           <th scope="col">Hari, Tanggal</th>
@@ -75,7 +72,6 @@
         </thread>
         <tbody>
           <tr>
-            <td>{{ nama }}</td>
             <td>{{ prediksi }}</td>
             <td>{{ metode }}</td>
             <td>{{ date }}</td>
