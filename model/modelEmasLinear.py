@@ -12,8 +12,11 @@ price = data["price"]
 df = pd.DataFrame({'date': date, 'price': price})
 df.date  = pd.to_datetime(df.date)
 
+x = df.date.values.astype(float).reshape(-1, 1)
+y = df['price'].values.reshape(-1, 1)
+
 lin = LinearRegression()
-lin.fit(df.date.values.reshape(-1, 1), df['price'].values.reshape(-1, 1))
+lin.fit(x, y)
 
 date_predict = np.array([str(str(besok.year)+'-0'+str(besok.month)+'-'+str(besok.day))])
 dfe = pd.DataFrame({'prediksi': date_predict})
@@ -22,5 +25,7 @@ dfe.prediksi = pd.to_datetime(dfe.prediksi)
 coef = lin.coef_
 intercept = lin.intercept_
 
-lin_predict = lin.predict(df.date.values.astype(float).reshape(-1, 1))
-lin_pred_future = lin.predict(dfe.prediksi.values.astype(float).reshape(-1, 1))
+x_predict = dfe.prediksi.values.astype(float).reshape(-1, 1)
+
+lin_predict = lin.predict(x)
+lin_pred_future = lin.predict(x_predict)

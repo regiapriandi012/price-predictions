@@ -12,15 +12,20 @@ price = data["price"]
 df = pd.DataFrame({'date': date, 'price': price})
 df.date  = pd.to_datetime(df.date)
 
-las = Lasso(alpha=0.01)
-las.fit(df.date.values.reshape(-1, 1), df['price'].values.reshape(-1, 1))
+x = df.date.values.astype(float).reshape(-1, 1)
+y =  df['price'].values.reshape(-1, 1)
+
+las = Lasso(alpha=0.01, tol=1, normalize=True)
+las.fit(x, y)
 
 date_predict = np.array([str(str(besok.year)+'-0'+str(besok.month)+'-'+str(besok.day))])
 dfe = pd.DataFrame({'prediksi': date_predict})
 dfe.prediksi = pd.to_datetime(dfe.prediksi)
 
+x_predict = dfe.prediksi.values.astype(float).reshape(-1, 1)
+
 coef = las.coef_
 intercept = las.intercept_
 
-las_predict = las.predict(df.date.values.astype(float).reshape(-1, 1))
-las_pred_future = las.predict(dfe.prediksi.values.astype(float).reshape(-1, 1))
+las_predict = las.predict(x)
+las_pred_future = las.predict(x_predict)
