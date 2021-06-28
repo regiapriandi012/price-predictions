@@ -13,7 +13,7 @@ from io import BytesIO
 from matplotlib.figure import Figure
 import datetime
 
-date = datetime.date.today() + datetime.timedelta(days=1)
+besok = datetime.date.today() + datetime.timedelta(days=1)
 app = Flask(__name__)
 
 @app.route("/")
@@ -44,12 +44,12 @@ def modelll():
     metode = request.form['metode']
 
     if metode == "Linear Regression" and prediksi == "Harga Emas":
-        from .model.modelEmasLinear import df, dfe, lin_predict, lin_pred_future
+        from .model.modelEmasLinear import date, date_predict, y, to_datetime, to_datetime_pred, lin_predict, lin_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, lin_predict)
-        ax.plot(dfe.prediksi, lin_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), lin_predict)
+        ax.plot(to_datetime_pred(date_predict), lin_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -60,15 +60,15 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(el)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cel, intercept=iel)
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(el)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cel), intercept=float(iel))
 
     elif metode == "Linear Regression" and prediksi == "Harga Perak":
-        from .model.modelPerakLinear import df, dfe, lin_predict, lin_pred_future
+        from .model.modelPerakLinear import date, date_predict, y, to_datetime, to_datetime_pred, lin_predict, lin_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, lin_predict)
-        ax.plot(dfe.prediksi, lin_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), lin_predict)
+        ax.plot(to_datetime_pred(date_predict), lin_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -79,15 +79,15 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pl)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cpl, intercept=ipl)
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pl)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpl), intercept=float(ipl))
 
     elif metode == "Linear Regression" and prediksi == "Harga Dollar":
-        from .model.modelDolarLinear import df, dfe, lin_predict, lin_pred_future
+        from .model.modelDolarLinear import date, date_predict, y, to_datetime, to_datetime_pred, lin_predict, lin_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, lin_predict)
-        ax.plot(dfe.prediksi, lin_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), lin_predict)
+        ax.plot(to_datetime_pred(date_predict), lin_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -98,15 +98,15 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dl)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdl, intercept=idl)
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dl)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdl), intercept=float(idl))
 
     elif metode == "Lasso" and prediksi == "Harga Emas":
-        from .model.modelEmasLasso import df, dfe, las_predict, las_pred_future
+        from .model.modelEmasLasso import date, date_predict, y, to_datetime, to_datetime_pred, las_predict, las_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, las_predict)
-        ax.plot(dfe.prediksi, las_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), las_predict)
+        ax.plot(to_datetime_pred(date_predict), las_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -117,15 +117,15 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(ela)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cela, intercept=iela)
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(ela)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cela), intercept=float(iela))
 
     elif metode == "Lasso" and prediksi == "Harga Perak":
-        from .model.modelPerakLasso import df, dfe, las_predict, las_pred_future
+        from .model.modelPerakLasso import date, date_predict, y, to_datetime, to_datetime_pred, las_predict, las_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, las_predict)
-        ax.plot(dfe.prediksi, las_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), las_predict)
+        ax.plot(to_datetime_pred(date_predict), las_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -136,15 +136,15 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pla)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cpla, intercept=ipla)
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pla)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpla), intercept=float(ipla))
 
     elif metode == "Lasso" and prediksi == "Harga Dollar":
-        from .model.modelDolarLasso import df, dfe, las_predict, las_pred_future
+        from .model.modelDolarLasso import date, date_predict, y, to_datetime, to_datetime_pred, las_predict, las_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, las_predict)
-        ax.plot(dfe.prediksi, las_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), las_predict)
+        ax.plot(to_datetime_pred(date_predict), las_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -155,16 +155,16 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dla)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdla, intercept=idla)
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dla)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdla), intercept=float(idla))
 
 
     elif metode == "Ridge Regression" and prediksi == "Harga Emas":
-        from .model.modelEmasRidge import df, dfe, rid_predict, rid_pred_future
+        from .model.modelEmasRidge import date, date_predict, y, to_datetime, to_datetime_pred, rid_predict, rid_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, rid_predict)
-        ax.plot(dfe.prediksi, rid_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), rid_predict)
+        ax.plot(to_datetime_pred(date_predict), rid_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -173,36 +173,36 @@ def modelll():
 
         buf = BytesIO()
         fig.savefig(buf, format="png")
-    
+
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(er)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cer, intercept=ier)
-        
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(er)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cer), intercept=float(ier))
+
     elif metode == "Ridge Regression" and prediksi == "Harga Perak":
-        from .model.modelPerakRidge import df, dfe, rid_predict, rid_pred_future
+        from .model.modelPerakRidge import date, date_predict, y, to_datetime, to_datetime_pred, rid_predict, rid_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, rid_predict)
-        ax.plot(dfe.prediksi, rid_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), rid_predict)
+        ax.plot(to_datetime_pred(date_predict), rid_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
         ax.legend(['Garis Ridge Regression'])
         ax.set_title("Grafik Ridge Regression Prediksi Harga Perak")
-    
+
         buf = BytesIO()
         fig.savefig(buf, format="png")
-    
+
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pr)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cpr, intercept=ipr)
-        
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pr)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpr), intercept=float(ipr))
+
     elif metode == "Ridge Regression" and prediksi == "Harga Dollar":
-        from .model.modelDolarRidge import df, dfe, rid_predict, rid_pred_future
+        from .model.modelDolarRidge import date, date_predict, y, to_datetime, to_datetime_pred, rid_predict, rid_pred_future
         fig = Figure(figsize=(10, 8))
         ax = fig.subplots()
-        ax.scatter(df.date, df['price'], color='green')
-        ax.plot(df.date, rid_predict)
-        ax.plot(dfe.prediksi, rid_pred_future)
+        ax.scatter(to_datetime(date), y, color='green')
+        ax.plot(to_datetime(date), rid_predict)
+        ax.plot(to_datetime_pred(date_predict), rid_pred_future)
         ax.tick_params(labelrotation=30)
         ax.set_ylabel("Dalam Rupiah")
         ax.set_xlabel("Tanggal (jangka 14 hari)")
@@ -213,8 +213,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dr)), date=str(date.strftime("%A"))+', '+str(date.day)+'/'+str(date.month)+'/'+str(date.year), coef=cdr, intercept=idr)
-
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dr)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdr), intercept=float(idr))
 
 if __name__ == "__main__":
     app.run(debug=True)
