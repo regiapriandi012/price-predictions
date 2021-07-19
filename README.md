@@ -1,9 +1,8 @@
 
->>>>>>>>>>># Sahabat Ormas
-## PricePredictions
-**Aplikasi prediksi harga emas, harga perak, dan harga dolar ke rupiah besoknya menggunakan algoritma linear regression, ridge regression, dan lasso berbasis web application menggunakan python flask**
+# Sahabat Ormas
+>## PricePredictions
+>**Aplikasi prediksi harga emas, harga perak, dan harga dolar ke rupiah besoknya menggunakan algoritma linear regression, ridge regression, dan lasso berbasis web application menggunakan python flask**
 
->proyek membangun aplikasi machine learning berbasis algoritma linear regression, hubber, dan lasso menggunakan web server flask
 ```text
 └── PricePredictions
     ├── model
