@@ -1,5 +1,9 @@
-# PricePredictions
-proyek membangun aplikasi machine learning berbasis algoritma linear regression, hubber, dan lasso menggunakan web server flask
+
+>>>>>>>>>>># Sahabat Ormas
+## PricePredictions
+**Aplikasi prediksi harga emas, harga perak, dan harga dolar ke rupiah besoknya menggunakan algoritma linear regression, ridge regression, dan lasso berbasis web application menggunakan python flask**
+
+>proyek membangun aplikasi machine learning berbasis algoritma linear regression, hubber, dan lasso menggunakan web server flask
 ```text
 └── PricePredictions
     ├── model
@@ -17,15 +21,11 @@ proyek membangun aplikasi machine learning berbasis algoritma linear regression,
     │   ├── __init__.py
     │   ├── conf
     │   │    ├── __init__.py
-    │   │    ├── databse.ini
+    │   │    ├── database.ini
     │   │    └── setting.py
     │   ├── __init__.py
     │   └── connect.py
     ├── static
-    │   │
-    │   │   
-    │   │   
-    │   │  
     │   ├── img
     │   │   ├── bagus.jpg
     │   │   ├── emas.jpg
@@ -41,6 +41,7 @@ proyek membangun aplikasi machine learning berbasis algoritma linear regression,
     │   └── model.html
     ├── __init__.py
     ├── app.py
+    ├── requirements.txt
     └── README.md
 ```
 
