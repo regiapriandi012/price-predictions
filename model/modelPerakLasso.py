@@ -7,7 +7,7 @@ import pandas as pd
 besok = datetime.date.today() + datetime.timedelta(days=1)
 
 date = data["date"]
-date_predict = np.array([str(str(besok.year)+'-0'+str(besok.month)+'-'+str(besok.day))])
+date_predict = np.array([str(str(besok.year)+'-'+str(besok.month)+'-'+str(besok.day))])
 price = data["price"]
 
 def to_datetime(date):
