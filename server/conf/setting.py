@@ -1,7 +1,7 @@
 from configparser import ConfigParser
 
 #directory di laptop @beroek
-#def config(filename='D:/project vscode/PricePredictions/server/conf/database.ini', section='postgresql'):
+#def config(filename='C:/Users/Aceri3/PycharmProjects/PricePredictions/server/conf/database.ini', section='postgresql'):
 #directory di laptop @mbagusi
 #def config(filename='D:/project vscode/PricePredictions/server/conf/database.ini', section='postgresql'):
 #directory di laptop @regi
