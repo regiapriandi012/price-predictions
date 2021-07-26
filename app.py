@@ -30,15 +30,15 @@ def model():
 
 @app.route('/', methods=['POST'])
 def modelll():
-    from .model.modelEmasLinear import coef as cel, intercept as iel
-    from .model.modelPerakLinear import coef as cpl, intercept as ipl
-    from .model.modelDolarLinear import coef as cdl, intercept as idl
-    from .model.modelEmasRidge import coef as cer, intercept as ier
-    from .model.modelDolarRidge import coef as cdr, intercept as idr
-    from .model.modelPerakRidge import coef as cpr, intercept as ipr
-    from .model.modelDolarLasso import coef as cdla, intercept as idla
-    from .model.modelEmasLasso import coef as cela, intercept as iela
-    from .model.modelPerakLasso import coef as cpla, intercept as ipla
+    from .model.modelEmasLinear import coef as cel, intercept as iel, rmse as rel
+    from .model.modelPerakLinear import coef as cpl, intercept as ipl, rmse as rpl
+    from .model.modelDolarLinear import coef as cdl, intercept as idl, rmse as rdl
+    from .model.modelEmasRidge import coef as cer, intercept as ier, rmse as rer
+    from .model.modelDolarRidge import coef as cdr, intercept as idr, rmse as rdr
+    from .model.modelPerakRidge import coef as cpr, intercept as ipr, rmse as rpr
+    from .model.modelDolarLasso import coef as cdla, intercept as idla, rmse as rdla
+    from .model.modelEmasLasso import coef as cela, intercept as iela, rmse as rela
+    from .model.modelPerakLasso import coef as cpla, intercept as ipla, rmse as rpla
 
     prediksi = request.form['prediksi']
     metode = request.form['metode']
@@ -60,7 +60,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(el)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cel), intercept=float(iel))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(el)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cel), intercept=float(iel), rmse=rel)
 
     elif metode == "Linear Regression" and prediksi == "Harga Perak":
         from .model.modelPerakLinear import date, date_predict, y, to_datetime, to_datetime_pred, lin_predict, lin_pred_future
@@ -79,7 +79,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pl)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpl), intercept=float(ipl))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pl)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpl), intercept=float(ipl), rmse=rpl)
 
     elif metode == "Linear Regression" and prediksi == "Harga Dollar":
         from .model.modelDolarLinear import date, date_predict, y, to_datetime, to_datetime_pred, lin_predict, lin_pred_future
@@ -98,7 +98,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dl)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdl), intercept=float(idl))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dl)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdl), intercept=float(idl), rmse=rdl)
 
     elif metode == "Lasso" and prediksi == "Harga Emas":
         from .model.modelEmasLasso import date, date_predict, y, to_datetime, to_datetime_pred, las_predict, las_pred_future
@@ -117,7 +117,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(ela)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cela), intercept=float(iela))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(ela)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cela), intercept=float(iela), rmse=rela)
 
     elif metode == "Lasso" and prediksi == "Harga Perak":
         from .model.modelPerakLasso import date, date_predict, y, to_datetime, to_datetime_pred, las_predict, las_pred_future
@@ -136,7 +136,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pla)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpla), intercept=float(ipla))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pla)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpla), intercept=float(ipla), rmse=rpla)
 
     elif metode == "Lasso" and prediksi == "Harga Dollar":
         from .model.modelDolarLasso import date, date_predict, y, to_datetime, to_datetime_pred, las_predict, las_pred_future
@@ -155,7 +155,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dla)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdla), intercept=float(idla))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dla)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdla), intercept=float(idla), rmse=rdla)
 
 
     elif metode == "Ridge Regression" and prediksi == "Harga Emas":
@@ -175,7 +175,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(er)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cer), intercept=float(ier))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(er)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cer), intercept=float(ier), rmse=rer)
 
     elif metode == "Ridge Regression" and prediksi == "Harga Perak":
         from .model.modelPerakRidge import date, date_predict, y, to_datetime, to_datetime_pred, rid_predict, rid_pred_future
@@ -194,7 +194,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pr)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpr), intercept=float(ipr))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(pr)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cpr), intercept=float(ipr), rmse=rpr)
 
     elif metode == "Ridge Regression" and prediksi == "Harga Dollar":
         from .model.modelDolarRidge import date, date_predict, y, to_datetime, to_datetime_pred, rid_predict, rid_pred_future
@@ -213,7 +213,7 @@ def modelll():
         fig.savefig(buf, format="png")
 
         data = base64.b64encode(buf.getbuffer()).decode("ascii")
-        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dr)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdr), intercept=float(idr))
+        return render_template('model.html', data=data, prediksi=prediksi, metode=metode, hasil='Rp. {}'.format(float(dr)), date=str(besok.strftime("%A"))+', '+str(besok.day)+'/'+str(besok.month)+'/'+str(besok.year), coef=float(cdr), intercept=float(idr), rmse=rdr)
 
 if __name__ == "__main__":
     app.run(debug=True)
