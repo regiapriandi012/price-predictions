@@ -22,16 +22,6 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{url_for('index')}}" style="color: white;">Home</a>
           </li>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{url_for('model')}}" style="color: white;">Cek
-                  Prediksi</a>
-              </li>
-              <li class="nav-item dropdown">
-              </li>
-            </ul>
-          </div>
         </ul>
       </div>
     </div>
@@ -42,14 +32,14 @@
     <h1 align="center" style="color: white;">Cek Prediksi</h1>
 
     <form action="/" method="POST" style="text-align: center;">
-      <select class="form-select" name="prediksi" aria-label="Default select example" style="margin: 5px; width: 600px; margin: auto;" required>
+      <select class="form-select" name="prediksi" aria-label="Default select example" style="margin: 5px; width: 450px; margin: auto;" required>
         <option value="" style="color: white;">Prediksi</option>
         <option value="Harga Emas"><label for="Harga Emas">Harga Emas</option></label>
         <option value="Harga Perak"><label for="Harga Perak">Harga Perak</option></label>
         <option value="Harga Dollar"><label for="Harga Dollar">Harga Dollar</option></label>
       </select>
       <br>
-      <select class="form-select" name="metode" aria-label="Default select example" style="margin: 5px; width: 600px; margin: auto;" required>
+      <select class="form-select" name="metode" aria-label="Default select example" style="margin: 5px; width: 450px; margin: auto;" required>
         <option value="">Pilih Metode Prediksi</option>
         <option value="Linear Regression"><label for="Linear Regression">Linear Regression</option></label>
         <option value="Ridge Regression"><label for="Ridge Regression">Ridge Regression</option></label>
@@ -62,12 +52,13 @@
       <h1 class="display-5" align="center" style="color: white;"> <b>Hasil Data</b></h1>
       <table class="table table-striped table-light">
         <tr>
-          <th scope="col">Prediksi</th>
-          <th scope="col">Metode</th>
-          <th scope="col">Hari, Tanggal</th>
-          <th scope="col">Koefesien</th>
-          <th scope="col">Intercept</th>
-          <th scope="col">Hasil Prediksi</th>
+          <th scope="col" style="height: auto; width: auto;">Prediksi</th>
+          <th scope="col" style="height: auto; width: auto;">Metode</th>
+          <th scope="col" style="height: auto; width: auto;">Hari, Tanggal</th>
+          <th scope="col" style="height: auto; width: auto;">Koefesien</th>
+          <th scope="col" style="height: auto; width: auto;">Intercept</th>
+          <th scope="col" style="height: auto; width: auto;">Root Mean Square Error (RMSE)</th>
+          <th scope="col" style="height: auto; width: auto;">Hasil Prediksi</th>
         </tr>
         </thread>
         <tbody>
@@ -77,6 +68,7 @@
             <td>{{ date }}</td>
             <td>{{ coef }}</td>
             <td>{{ intercept }}</td>
+            <td>{{ rmse }}</td>
             <td>{{ hasil }}</td>
           </tr>
         </tbody>
