@@ -3,6 +3,7 @@ import numpy as np
 from ..server import data_perak as data
 import datetime
 import pandas as pd
+from sklearn import metrics
 
 besok = datetime.date.today() + datetime.timedelta(days=1)
 
@@ -39,3 +40,5 @@ def prediction(las):
 
 coef, intercept = coef_intercept(las)
 las_predict, las_pred_future = prediction(las)
+
+rmse = np.sqrt(metrics.mean_squared_error(y, las_predict))

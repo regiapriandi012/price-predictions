@@ -3,6 +3,7 @@ import numpy as np
 from ..server import data_dolar as data
 import datetime
 import pandas as pd
+from sklearn import metrics
 
 besok = datetime.date.today() + datetime.timedelta(days=1)
 
@@ -39,3 +40,5 @@ def prediction(rid):
 
 coef, intercept = coef_intercept(rid)
 rid_predict, rid_pred_future = prediction(rid)
+
+rmse = np.sqrt(metrics.mean_squared_error(y, rid_predict))

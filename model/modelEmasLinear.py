@@ -3,7 +3,7 @@ import numpy as np
 from ..server import data_emas as data
 import datetime
 import pandas as pd
-
+from sklearn import metrics
 besok = datetime.date.today() + datetime.timedelta(days=1)
 
 date = data["date"]
@@ -39,3 +39,5 @@ def prediction(lin):
 
 coef, intercept = coef_intercept(lin)
 lin_predict, lin_pred_future = prediction(lin)
+
+rmse = np.sqrt(metrics.mean_squared_error(y, lin_predict))
