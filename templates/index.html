@@ -1,20 +1,3 @@
-<?php
-include('koneksi.php');
-$emas = pg_query($koneksi,"select * from emas");
-$perak = pg_query($koneksi,"select * from perak");
-$dolar = pg_query($koneksi,"select * from dolar");
-while($row = pg_fetch_array($emas)){
-    $tanggal[] = $row['date'];
-    $harga_emas[] = $row['price'];
-}
-while($row1 = pg_fetch_array($perak)){
-    $harga_perak[] = $row1['price'];
-}
-while($row2 = pg_fetch_array($dolar)){
-    $harga_dolar[] = $row2['price'];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
