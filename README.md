@@ -1,8 +1,18 @@
+[![PyPI - Python](https://img.shields.io/pypi/pyversions/iconsdk?logo=pypi)](https://pypi.org/project/iconsdk)
 
 # Sahabat Ormas
->## PricePredictions
->**Aplikasi prediksi harga emas, harga perak, dan harga dolar ke rupiah besoknya menggunakan algoritma linear regression, ridge regression, dan lasso berbasis web application menggunakan python flask**
+## PricePredictions App
+Aplikasi prediksi harga emas, harga perak, dan harga dolar ke rupiah besoknya menggunakan algoritma linear regression, ridge regression, dan lasso berbasis web application menggunakan python flask.
 
+## Installation
+```
+#Save dataset of price on database in server/conf/database.ini
+cd Price-Predictions-Flask
+source bin/acticate
+flask run
+```
+
+## Directory Structure
 ```text
 └── PricePredictions
     ├── model
@@ -43,5 +53,10 @@
     ├── requirements.txt
     └── README.md
 ```
+
+## Result Of Prediction
+![image](https://user-images.githubusercontent.com/69528812/188315392-de93820a-4dde-485d-9c22-85118d6a3d6f.png)
+
+### Read blog about this App on https://medium.com/data-folks-indonesia/build-machine-learning-models-prediction-with-linear-regression-ridge-regression-and-lasso-and-1e0a5bc4503c
 
 
