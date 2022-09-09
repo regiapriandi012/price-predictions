@@ -8,8 +8,8 @@ Aplikasi prediksi harga emas, harga perak, dan harga dolar ke rupiah besoknya me
 ```
 #Save dataset of price on database in server/conf/database.ini
 cd price-prediction-flask
-pyhton3 -m venv venv  
-venv\Scripts\activate  
+python3 -m venv venv  
+source ./venv/bin/activate
 pip install -r requirements.txt  
 flask run
 ```
