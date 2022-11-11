@@ -1,4 +1,6 @@
-[![PyPI - Python](https://img.shields.io/pypi/pyversions/iconsdk?logo=pypi)](https://pypi.org/project/iconsdk)
+![](https://github.com/regiapriandi012/price-predictions-flask/actions/workflows/codeql.yml/badge.svg)
+![](https://github.com/regiapriandi012/price-predictions-flask/actions/workflows/dependency-review.yml/badge.svg)
+![](https://github.com/regiapriandi012/price-predictions-flask/actions/workflows/docker-image.yml/badge.svg)
 
 # Sahabat Ormas
 ## PricePredictions App
